@@ -1,11 +1,12 @@
 import React from 'react'
 
-const JokeDisplay = ({jokes}) => {
+const JokeDisplay = ({jokes, randomJoke}) => {
   return (
     <div>
       {jokes.forEach((joke, index) => {
         <li key={index}>{joke.text}</li>
       })}
+      <h3>{randomJoke.text}</h3>
     </div>
   )
 }
