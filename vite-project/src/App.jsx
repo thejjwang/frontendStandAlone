@@ -28,26 +28,27 @@ function App() {
   };
 
   const fetchJokeById = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:5001/api/joke/${id}`);
-      const data = await response.json();
-      console.log(data);
-      setJokeById(data);
-      setRandomJoke(""); 
-      setShowJokeDisplay(true); 
-    } catch (err) {
-      console.log("error fetching x jokes:" + err);
+    if (id) {
+      try {
+        const response = await fetch(`http://localhost:5001/api/joke/${id}`);
+        const data = await response.json();
+        console.log(data);
+        setJokeById(data);
+        setRandomJoke(""); 
+        setShowJokeDisplay(true); 
+      } catch (err) {
+        console.log("error fetching x jokes:" + err);
+      }
+    } else {
+      alert('Enter joke id to search by joke id')
     }
   };
 
-  const clearInnerText = () => {
-
-  }
 
   return (
     <div className="bg-gray-200 min-h-screen py-0">
       <div className="m-0 p-0">
-        <h1 className="text-4xl font-semibold text-center text-pink-500 my-4">
+        <h1 className="text-4xl font-semibold text-center text-pink-500 my-4 mt-0 pt-10">
           Joke Generator
         </h1>
       </div>
