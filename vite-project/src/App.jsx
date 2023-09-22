@@ -74,7 +74,7 @@ function App() {
             Get Joke By Id
           </span>
         </button>
-      </div>
+      </div> 
       {showJokeDisplay && <JokeDisplay jokeById={jokeById} randomJoke={randomJoke} />}
     </div>
   );
