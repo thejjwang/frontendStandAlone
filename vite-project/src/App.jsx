@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import JokeDisplay from "./JokeDisplay";
 
+
+// logic is right now that the getjoke button will either produce random joke
+// if no input is inputted or if a input is there it will produce the joke by id
+// so maybe can implment either just use that one button for both random and by id
+// or use 2 buttons and make it so if no input is added the button doesnt do anything
+// but tells user to input a value if they want to search by id
+
+
 function App() {
   const [jokeById, setJokeById] = useState("");
   const [userInput, setUserInput] = useState("");
@@ -27,7 +35,7 @@ function App() {
       console.log("error fetching x jokes:" + err);
     }
   }
-  
+
   return (
     <div>
       <div className="">
@@ -40,6 +48,7 @@ function App() {
         type="number"
         value={userInput}
         onChange={(e) => setUserInput(e.target.value)}
+        required
       ></input>
       <button onClick={()=> fetchJokeById(userInput)}>Get Joke</button>
       <JokeDisplay jokeById={jokeById} randomJoke={randomJoke} />
