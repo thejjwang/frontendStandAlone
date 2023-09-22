@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import JokeDisplay from "./JokeDisplay";
+import './index.css'
 
 
 // logic is right now that the getjoke button will either produce random joke
@@ -37,9 +38,9 @@ function App() {
   }
 
   return (
-    <div>
-      <div className="">
-        <h1>Joke Generator</h1>
+    <div className="bg-gray-200 min-h-screen py-0">
+      <div className="m-0 p-0">
+        <h1 className="text-2xl font-semibold text-center text-blue-500 my-4">Joke Generator</h1>
       </div>
 
       <button onClick={fetchRandomJoke}>Get Random Joke</button>
