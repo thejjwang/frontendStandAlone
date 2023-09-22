@@ -71,7 +71,7 @@ function App() {
           onClick={() => fetchJokeById(userInput)}
         >
           <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-700 rounded-md group-hover:bg-opacity-0">
-            Get Joke
+            Get Joke By Id
           </span>
         </button>
       </div>
