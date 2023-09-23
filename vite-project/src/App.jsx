@@ -13,13 +13,14 @@ function App() {
   const [userInput, setUserInput] = useState("");
   const [randomJoke, setRandomJoke] = useState("");
   const [showJokeDisplay, setShowJokeDisplay] = useState(false);
+  const [requiredTextVisible, setRequiredTextVisible] = useState(false);
 
   const fetchRandomJoke = async () => {
     try {
       const response = await fetch("http://localhost:5001/api/joke");
       const data = await response.json();
       console.log(data);
-      setRandomJoke(data);
+      setRandomJoke(data);  
       setJokeById("");
       setShowJokeDisplay(true);
     } catch (err) {
@@ -27,20 +28,22 @@ function App() {
     }
   };
 
-  const fetchJokeById = async (id) => {
-    if (id) {
+  const fetchJokeById = async (userInput) => {
+    if (userInput.trim() === "") {
+      setRequiredTextVisible(true);
+    } else {
       try {
-        const response = await fetch(`http://localhost:5001/api/joke/${id}`);
+        const response = await fetch(`http://localhost:5001/api/joke/${userInput}`);
         const data = await response.json();
         console.log(data);
         setJokeById(data);
         setRandomJoke("");
         setShowJokeDisplay(true);
+        setRequiredTextVisible(false);
       } catch (err) {
         console.log("error fetching x jokes:" + err);
+        setRequiredTextVisible(true);
       }
-    } else {
-      alert("Enter joke id to search by joke id");
     }
   };
 
@@ -71,6 +74,9 @@ function App() {
             Get Joke By Id
           </span>
         </button>
+        {requiredTextVisible && (
+        <p style={{ color: "red" }}>no id found/incorrect input</p>
+        )}
         <input
           className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 text-gray-900 placeholder-gray-400 h-12"
           placeholder="Enter # (joke id)"
