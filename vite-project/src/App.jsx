@@ -34,26 +34,31 @@ function App() {
         const data = await response.json();
         console.log(data);
         setJokeById(data);
-        setRandomJoke(""); 
-        setShowJokeDisplay(true); 
+        setRandomJoke("");
+        setShowJokeDisplay(true);
       } catch (err) {
         console.log("error fetching x jokes:" + err);
       }
     } else {
-      alert('Enter joke id to search by joke id')
+      alert("Enter joke id to search by joke id");
     }
   };
 
-
   return (
-    <div className="bg-gray-200 min-h-screen py-0">
+    <div className="bg-gray-200 min-h-screen py-12">
       <div className="m-0 p-0">
-        <h1 className="text-4xl font-semibold text-center text-pink-500 my-4 mt-0 pt-10">
-          Joke Generator
+        <h1 className="text-6xl font-extrabold text-center text-pink-500 my-4">
+          Welcome to the Joke Generator
         </h1>
+        <p className="text-xl text-center text-gray-600">
+          Bringing Laughter to Your Day
+        </p>
       </div>
-      <div className="gap-6 text-center">
-        <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800" onClick={fetchRandomJoke}>
+      <div className="gap-6 text-center mt-20">
+        <button
+          className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
+          onClick={fetchRandomJoke}
+        >
           <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-700 rounded-md group-hover:bg-opacity-0">
             Get A Random Joke
           </span>
@@ -74,12 +79,12 @@ function App() {
           onChange={(e) => setUserInput(e.target.value)}
           required
         ></input>
-      </div> 
-      {showJokeDisplay && <JokeDisplay jokeById={jokeById} randomJoke={randomJoke} />}
+      </div>
+      {showJokeDisplay && (
+        <JokeDisplay jokeById={jokeById} randomJoke={randomJoke} />
+      )}
     </div>
   );
 }
-
-
 
 export default App;
